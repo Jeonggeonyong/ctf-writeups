@@ -83,6 +83,7 @@ int ask_name() {
 `name`의 크기는 30인 반면 `fgets`로 읽어오는 크기는 0x30으로 18byte 넘어서 덮어쓸 수 있다.  
 ## Exploit
 ### Strategy
+스택 카나리가 비활성화 되어 있어 BOF로 ra를 덮어쓸 수 있다. 따라서 `ask_name` 함수의 ra를 `print_flag`의 주소로 덮어쓰면 flag를 획득할 수 있다. (18byte로 덮어쓰기에 충분함)
 ### Exploitation Steps
 ### Stack Frame of main
 | Variable Name | Offset from EBP |
