@@ -52,7 +52,7 @@ undefined8 main(void) {
     return 0;
 }
 ```
-카나리, PIE 등의 보호기법이 적용되어 있지만, Return 2 Libc에 필요한 정보를 제공해 준다.  
+카나리, PIE 등의 보호기법이 적용되어 있지만, Return 2 Libc에 필요한 정보를 출력한다.   
 ## Vulnerability
 ### BOF(Buffer Overflow)
 ``` c

