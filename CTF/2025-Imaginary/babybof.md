@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy
 - Points: 100
 - Provided Files: vuln(ELF)
-- tools: 
+- tools: gdb(pwndbg), checksec, pwntool
 ## Brief Description
 welcome to pwn! hopefully you can do your first buffer overflow
 ## Initial Analysis
@@ -52,14 +52,16 @@ undefined8 main(void) {
     return 0;
 }
 ```
+카나리, PIE 등의 보호기법이 적용되어 있지만, Return 2 Libc에 필요한 정보를 제공해 준다.  
 ## Vulnerability
 ### BOF(Buffer Overflow)
 ``` c
 FUN_004010c0(buf); // gets(buf);
 ```
+`gets`함수 사용으로 인해, BOF 취약점이 발생한다. 
 ## Exploit
 ### Strategy
-ROP 공격
+Return 2 Libc에 필요한 정보를 모두 제공하기 때문에 단순하게 payload만 작성하면 된다.  
 ### Exploitation Steps
 ### Stack Frame of main
 | Variable Name | Offset from RBP |

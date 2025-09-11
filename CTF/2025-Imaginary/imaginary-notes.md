@@ -5,13 +5,12 @@
 - Category: web
 - Difficulty (subjective): easy
 - Points: 100
-- Provided Files:
-- tools:
+- Provided Files: Blind
+- tools: Burp Suite
 ## Brief Description
 I made a new note taking app using Supabase! Its so secure, I put my flag as the password to the "admin" account. I even put my anonymous key somewhere in the site. The password database is called, "users". http://imaginary-notes.chal.imaginaryctf.org
 ## Initial Analysis
 ### Environment
-### Code
 ## Vulnerability
 ## Exploit
 ### Strategy
@@ -444,3 +443,4 @@ Alt-Svc: h3=":443"; ma=86400
 
 [{"id":"5df6d541-c05e-4630-a862-8c23ec2b5fa9","username":"admin","password":"ictf{why_d1d_1_g1v3_u_my_@p1_k3y???}"}]
 ```
+![](./../../Resources/images/2025-Imaginary-imaginary-notes1.png "로그인 화면")
