@@ -2,7 +2,7 @@
 ## Challenge Info
 - Date: YYYY-MM-DD
 - CTF Name:
-- Category: web/pwn/rev/crypto/osint/misc
+- Category: web/pwn/rev/crypto/forensic/osint/misc
 - Difficulty (subjective): easy/medium/hard
 - Points:
 - Provided Files:
