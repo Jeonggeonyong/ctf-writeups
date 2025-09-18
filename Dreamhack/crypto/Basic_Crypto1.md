@@ -12,12 +12,13 @@ This Problem Basic_Crpyto(Roman emperor's cipher)
 FLAG FORMAT(A~Z) and empty is "_"  
 DH{decode_Text}
 ## Initial Analysis
-### content
+### encoded.txt
 ``` plain text
 EDVLF FUBSWR GUHDPKDFN
 ```
 ## PoC(Poof of Concept)
-### Decode Roman emperor's cipher
+카이사르 암호는 총 26개의 key개 존재하므로, 해당 키를 모두 전수 조사하면 FLAG를 복호화할 수 있다.  
+### solve.py
 ``` python
 encodedString = "EDVLF FUBSWR GUHDPKDFN"
 
@@ -63,3 +64,4 @@ Key 23: HGYOI_IXEVZU_JXKGSNGIQ
 Key 24: GFXNH_HWDUYT_IWJFRMFHP
 Key 25: FEWMG_GVCTXS_HVIEQLEGO
 ```
+총 26개의 key를 전수 조사한 결과다. 이 중에서 의미 있는 평문을 찾으면 된다.    
