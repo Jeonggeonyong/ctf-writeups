@@ -1,7 +1,7 @@
 # half image - Dreamhack
 ## Challenge Info
 - Date: 2025
-- CTF Name:
+- CTF Name: Dreamhack
 - Category: forensic
 - Difficulty (subjective): easy
 - Points: 1
@@ -25,12 +25,15 @@ with open("flag.png", "wb") as f_out:
     f_out.write(lp)
     f_out.write(rdata)
 ```
-FLAG 이미지를 세로로 절반으로 나눈 후, 왼쪽 데이터는 png 이미지로 저장하고 오른쪽 데이터는 byte로 변환하여 저장한다.  
-### PNG File Signature
+FLAG 이미지를 세로로 절반으로 나눈 후, 왼쪽 데이터는 png 이미지로 저장하고 오른쪽 데이터는 byte로 변환하여 이어서 저장한다.  
+### flag.png
+![](/Resources/images/half_image-half_flag.jpg 'half flag')
+### flag.png File Signature
 - Header Signature: `89 50 4E 47 0D 0A 1A 0A`
 - Footer Signature: `49 45, 4E 44 AE, 42, 60, 82`
 
 HxD를 통해 flag.png에 Footer Signature가 존재하는지 먼저 확인한 결과 다음과 같이 존재하는 것을 확인할 수 있었다.  
+
 ![](/Resources/images/half_image-Header_Signature.jpg 'header')
 ![](/Resources/images/half_image-Footer_Signature.jpg 'footer')
 ## PoC(Poof of Concept)
