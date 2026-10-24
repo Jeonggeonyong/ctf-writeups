@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy
 - Points:
 - Provided Files: old-memes.c
-- tools:
+- Tools:
 ## Brief Description
 Always want to do a bufferoverflow? Here is your chance! Ideal for first timers, you even get the source code!
 ## Initial Analysis

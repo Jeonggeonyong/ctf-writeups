@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy
 - Points: 250
 - Provided Files: libc.so.6, prob(ELF)
-- tools: gdb(pwndbg), checksec, ROPgadget, one_gadget
+- Tools: gdb(pwndbg), checksec, ROPgadget, one_gadget
 ## Brief Description
 I prepare book for you.
 You can write articles in here.

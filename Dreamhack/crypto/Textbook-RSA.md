@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy
 - Points: 2
 - Provided Files: challenge.py
-- tools:
+- Tools:
 ## Brief Description
 드림이가 비밀 플래그를 가지고 있는 RSA 서버를 운영하고 있습니다. 서버를 공격해 플래그를 탈취해주세요!  
 플래그 형식은 DH{...} 입니다.
@@ -37,7 +37,7 @@ class RSA(object):
 - FLAG의 암호문: C
 - 공개키: (N, e)
 - 암호화 함수: C = M^e (mod N)
-## PoC(Poof of Concept)
+## PoC (Proof of Concept)
 FLAG의 암호문과 공개키를 알고 있고 복호화 요청을 할 수 있으므로, 곱셈 동형성 특성을 통해 CCA(Chosen-Ciphertext Attack) 공격을 시도할 수 있다.  
 - CCA1(선택 암호문 공격): 공격자가 암호문을 미리 선택하여 복호화를 요청하고, 그 결과로 얻은 평문을 분석한다. 이후 추가적인 암호문을 선택할 수 없다.
 - CCA2(적응형 선택 암호문 공격): 공격자가 복호화 요청으로 암호문을 해독하는 과정 중에도, 목표 암호문을 제외한 새로운 암호문을 계속해서 선택하고 요청할 수 있다.  

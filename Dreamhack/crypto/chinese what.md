@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy
 - Points: 1
 - Provided Files: prob.py, output.txt
-- tools:
+- Tools:
 ## Brief Description
 CRT는 rsa에 많이 응용되는 정리입니다.  
 간단한 문제를 풀어보며 CRT란 무엇인지 알아보세요.
@@ -31,7 +31,7 @@ print(f'c3 = {flag % p3}')
 FLAG를 long 타입으로 변환하여, 420 bit 크기의 무작위 소수 3개를 생성 후, 해당 소수 & FLAG를 소수로 mod 연산한 결과를 출력한다.  
 해당 문제는 전형적인 ctr를 이용하는 문제다. ctr의 핵심 원리는 `서로소인 여러 개의 modulus에 대한 나머지가 주어졌을 때, 유일한 해를 modulus들의 곱에 대한 나머지로 구할 수 있다`는 것이다.  
 ![](/Resources/images/chinese%20what-ctr.jpg "ctr")
-## PoC(Poof of Concept)
+## PoC (Proof of Concept)
 ``` python
 def xgcd(a, b): # 확장 유클리드 알고리즘
     if b == 0:

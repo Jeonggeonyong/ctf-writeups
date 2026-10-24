@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy/medium/hard
 - Points:
 - Provided Files:
-- tools:
+- Tools:
 ## Brief Description
 ## Initial Analysis
 ### Environment
@@ -22,6 +22,7 @@
 ``` python
 from pwn import *
 ```
-## PoC(Poof of Concept)
+## PoC (Proof of Concept)
 ## Lessons Learned
 ## Mitigation Strategies(Remediation)
+## Conclusion

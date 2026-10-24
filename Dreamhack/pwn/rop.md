@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy
 - Points: 2
 - Provided Files: rop.c, rop(ELF)
-- tools: gdb(pwndbg), checksec, ROPgadget
+- Tools: gdb(pwndbg), checksec, ROPgadget
 ## Brief Description
 Exploit Tech: Return Oriented Programming에서 실습하는 문제입니다.
 ## Initial Analysis

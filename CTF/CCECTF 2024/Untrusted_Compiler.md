@@ -6,7 +6,7 @@
 - Difficulty (subjective): medium
 - Points:
 - Provided Files: chall.c
-- tools: ghidra
+- Tools: ghidra
 ## Brief Description
 Do you trust the compiler? nc 43.202.156.51 1337  
 ## Initial Analysis

@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy
 - Points: 1
 - Provided Files: app.py, base.html, flag.html, index.html, memo.html
-- tools: Burp Suite
+- Tools: Burp Suite
 ## Brief Description
 여러 기능과 입력받은 URL을 확인하는 봇이 구현된 서비스입니다.  
 XSS 취약점을 이용해 플래그를 획득하세요. 플래그는 flag.txt, FLAG 변수에 있습니다.  
@@ -120,4 +120,4 @@ def vuln():
 ### Strategy
 `/flag` 엔드포인트 내부에서 `/vuln` 엔드포인트를 사용하기 때문에, `/flag` 엔드포인트에 `<script>location.href = "/memo?memo=" + document.cookie;</script>`과 같은 익스플로잇 코드를 입력하면 `/memo`에서 FLAG를 확인 가능하다. 
 ### Exploitation Steps
-### PoC(Poof of Concept)
+### PoC (Proof of Concept)

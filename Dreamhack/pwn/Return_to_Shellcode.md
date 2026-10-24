@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy
 - Points: 2
 - Provided Files: r2c.c, r2c(ELF)
-- tools: gdb(pwndbg)
+- Tools: gdb(pwndbg)
 ## Brief Description
 Exploit Tech: Return to Shellcode에서 실습하는 문제입니다.  
 ## Initial Analysis

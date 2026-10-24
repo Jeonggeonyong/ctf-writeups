@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy/medium/hard
 - Points: 1
 - Provided Files: fsb_overwrite.c, fsb_overwrite(ELF)
-- tools:
+- Tools:
 ## Brief Description
 Exploit Tech: Format String Bug에서 실습하는 문제입니다.
 ## Initial Analysis

@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy
 - Points: 100
 - Provided Files: Blind
-- tools: Burp Suite
+- Tools: Burp Suite
 ## Brief Description
 I made a new note taking app using Supabase! Its so secure, I put my flag as the password to the "admin" account. I even put my anonymous key somewhere in the site. The password database is called, "users". http://imaginary-notes.chal.imaginaryctf.org
 ## Initial Analysis
@@ -17,7 +17,7 @@ I made a new note taking app using Supabase! Its so secure, I put my flag as the
 ![](./../../Resources/images/2025-Imaginary-imaginary-notes3.png "입력1")
 ![](./../../Resources/images/2025-Imaginary-imaginary-notes4.png "입력2")
 Burp Suite로 확인한 결과 서버와 아무런 상호작용(Request, Response)이 없었다.  
-## PoC(Poof of Concept)
+## PoC (Proof of Concept)
 ### eq.yerin eq.1234
 ``` http
 GET /rest/v1/users?select=*&username=eq.yerin&password=eq.1234 HTTP/2
@@ -265,7 +265,7 @@ Alt-Svc: h3=":443"; ma=86400
 {"id":"5df6d541-c05e-4630-a862-8c23ec2b5fa9","username":"admin","password":"ictf{why_d1d_1_g1v3_u_my_@p1_k3y???}"}
 ```
 `admin` 계정은 단 한 개만 존재하기 때문에, 사전순으로 가장 앞에오는 `'0'`에 `gt.` 연산을 추가하여 로그인을 시도한 결과 `admin` 계정으로 로그인에 성공할 수 있었다.  
-## PoC(Poof of Concept) 2
+## PoC (Proof of Concept) 2
 ### id eq.yerin
 ``` http
 GET /rest/v1/users?select=id&username=eq.yerin HTTP/2

@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy
 - Points: 1
 - Provided Files: app.py
-- tools: Burp Suite
+- Tools: Burp Suite
 ## Brief Description
 로그인 서비스입니다.  
 SQL INJECTION 취약점을 통해 플래그를 획득하세요. 플래그는 flag.txt, FLAG 변수에 있습니다.
@@ -133,7 +133,7 @@ Connection: close
 <script>alert("hello guest");history.go(-1);</script>
 ```
 `userid`를 `guest"--`로 입력한 결과 비밀번호 검증을 건너뛰고 로그인 되는 것을 확인할 수 있다.  
-### PoC(Poof of Concept)
+### PoC (Proof of Concept)
 ``` http
 POST /login HTTP/1.1
 Host: host8.dreamhack.games:8269

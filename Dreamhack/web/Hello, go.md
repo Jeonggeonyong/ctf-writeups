@@ -6,9 +6,9 @@
 - Difficulty (subjective): easy/medium/hard
 - Points: 2
 - Provided Files:
-- tools:
+- Tools:
 ## Brief Description
 ## Initial Analysis
 ### Code
 SSTI
-## PoC(Poof of Concept)
+## PoC (Proof of Concept)

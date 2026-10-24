@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy
 - Points: 2
 - Provided Files:
-- tools:
+- Tools:
 ## Brief Description
 Exploit Tech: Use After Free에서 실습하는 문제입니다.
 ## Initial Analysis

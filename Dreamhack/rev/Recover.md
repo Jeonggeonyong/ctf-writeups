@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy
 - Points: 1
 - Provided Files: chall(ELF), encrypted
-- tools: Ghidra
+- Tools: Ghidra
 ## Brief Description
 This challenge provides chall binary, along with encrypted file.  
 The chall binary encrypts the flag.png file containing the flag, then stores it as an encrypted file.  
@@ -58,7 +58,7 @@ undefined8 main(void) {
 }
 ```
 `flag.png` 파일의 각 데이터는 `0xDE`, `0xAD`, `0xBE`, `0xEF` 키를 이용해 반복적으로 XOR 연산한 뒤, 각 바이트에 0x13을 더하는 방식으로 암호화된다. 이 과정을 역순으로 적용하면 원본 `flag.png` 파일을 복원할 수 있다.
-## PoC(Poof of Concept)
+## PoC (Proof of Concept)
 ``` python
 key = [0xde, 0xad, 0xbe, 0xef]
 with open("encrypted", "rb") as f :

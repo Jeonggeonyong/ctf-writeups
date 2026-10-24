@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy
 - Points: 3
 - Provided Files: libc-2.27.so, tcache_poison.c, tcache_poison(ELF)
-- tools:
+- Tools:
 ## Brief Description
 Exploit Tech: Tcache Poisoning에서 실습하는 문제입니다.
 ## Initial Analysis

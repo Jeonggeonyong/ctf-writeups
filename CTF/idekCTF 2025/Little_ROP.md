@@ -6,7 +6,7 @@
 - Difficulty (subjective): hard
 - Points:
 - Provided Files: chall(ELF), flag.txt
-- tools: gdb(pwndbg), checksec, ROPgadget, ghidra
+- Tools: gdb(pwndbg), checksec, ROPgadget, ghidra
 ## Brief Description
 No PIE, no canary. Perfect setup for ROP. Show me what you can do!
 ## Initial Analysis

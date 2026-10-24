@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy
 - Points: 1
 - Provided Files: flag.png, flag.py
-- tools: HxD
+- Tools: HxD
 ## Brief Description
 For some reason a flag image was cut in half Can you find the reason and get the flag?
 ## Initial Analysis
@@ -36,7 +36,7 @@ HxD를 통해 flag.png에 Footer Signature가 존재하는지 먼저 확인한 �
 
 ![](/Resources/images/half_image-Header_Signature.jpg 'header')
 ![](/Resources/images/half_image-Footer_Signature.jpg 'footer')
-## PoC(Poof of Concept)
+## PoC (Proof of Concept)
 ``` python
 from PIL import Image
 

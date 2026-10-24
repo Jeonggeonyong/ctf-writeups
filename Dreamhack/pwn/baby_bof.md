@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy
 - Points: basic
 - Provided Files: baby-bof.c, baby-bof(ELF)
-- tools:
+- Tools:
 ## Brief Description
 Simple pwnable 101 challenge  
 Q. What is Return Address?  

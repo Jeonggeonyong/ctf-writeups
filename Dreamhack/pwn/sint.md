@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy
 - Points: 1
 - Provided Files: sint.c, sint(ELF)
-- tools:
+- Tools:
 ## Brief Description
 이 문제는 서버에서 작동하고 있는 서비스(sint)의 바이너리와 소스 코드가 주어집니다.
 프로그램의 취약점을 찾고 익스플로잇해 get_shell 함수를 실행시키세요.

@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy
 - Points: 1 
 - Provided Files: flag-printer(ELF)
-- tools: Ghidra
+- Tools: Ghidra
 ## Brief Description
 Simple Flag Printer
 ## Initial Analysis
@@ -146,7 +146,7 @@ LAB_00101656:
 ```
 우선 결론만 보면 유효한 사용자의 입력에 따라 하위 32비트의 값이 0, 1, 2로,  상위 32비트가 `switchVal` 값(0, 1)으로 초기화된 후 값을 반환한다.  
 `switchVal`이 초기화 되는 값(0, 1)에 따라 `main()`에 반환하는 메뉴 상위 32비트가 0 또는 1이 된다. 즉, `1`로 초기화하기 위해서는 `__s1`(사용자 초기 4byte 입력)이 인코딩 과정을 거친 결과가 `"&-17"`이 되어야 하며, 하위 32비트 또한 `print()`를 트리거 하기 위해 0으로 초기화 되어야 한다.  
-## PoC(Poof of Concept)
+## PoC (Proof of Concept)
 ### Flow Diagram
 ![](../../Resources/images/flag_printer-FlowDiagram.png "흐름도")
 `"&-17"`는 아스키코드에서 10진수로 변환하면 `38 45 49 55`이 나온다. 여기에 각각 `xor 66` 연산을 하면 `100 111 115 117` 즉, `"dosu"`가 나온다. 하위 32비트 또한 `print()` 트리거를 위해서 0으로 초기화 되어야 하기 때문에, 최종 입력은 `"dosu print"`가 된다.  

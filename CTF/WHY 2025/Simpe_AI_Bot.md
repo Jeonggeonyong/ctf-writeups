@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy/medium/hard
 - Points:
 - Provided Files:
-- tools:
+- Tools:
 ## Brief Description
 With everything and everyone going AI today, we also are developing our own AI bot. It is a first draft and it still requires some work, but feel free to test it out.
 ## Initial Analysis

@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy
 - Points: 2
 - Provided Files: 
-- tools: Ghidra
+- Tools: Ghidra
 ## Brief Description
 Back in 1983, when you only had A and B on your controller...
 ## Initial Analysis
@@ -190,7 +190,7 @@ bool spell(long buf,long randNum) {
 ```
 `A`와 `B`에 따라 연산되는 `result`값이 `randNum`의 값과 같다면 1(true)를 반환한다.  
 즉, 사용자 입력(spell)이 `A`와 `B`로 알맞게 구성되어야 한다. 
-### PoC(Poof of Concept)
+### PoC (Proof of Concept)
 ``` python
 from pwn import *
 

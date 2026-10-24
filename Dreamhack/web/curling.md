@@ -6,10 +6,10 @@
 - Difficulty (subjective): easy/medium/hard
 - Points: 2
 - Provided Files:
-- tools:
+- Tools:
 ## Brief Description
 ## Initial Analysis
 ### Environment
 ### Code
 
-## PoC(Poof of Concept)
+## PoC (Proof of Concept)

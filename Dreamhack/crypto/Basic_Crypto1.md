@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy
 - Points: 1
 - Provided Files: encoded.txt
-- tools:
+- Tools:
 ## Brief Description
 This Problem Basic_Crpyto(Roman emperor's cipher)  
 FLAG FORMAT(A~Z) and empty is "_"  
@@ -16,7 +16,7 @@ DH{decode_Text}
 ``` plain text
 EDVLF FUBSWR GUHDPKDFN
 ```
-## PoC(Poof of Concept)
+## PoC (Proof of Concept)
 카이사르 암호는 총 26개의 key개 존재하므로, 해당 키를 모두 전수 조사하면 FLAG를 복호화할 수 있다.  
 ### solve.py
 ``` python

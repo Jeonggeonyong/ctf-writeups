@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy
 - Points:
 - Provided Files:
-- tools:
+- Tools:
 ## Brief Description
 I just started programming and created my first website, an overview of all the planets in our solar system. Can you check if I didn't leave any security issues in it?
 ## Initial Analysis

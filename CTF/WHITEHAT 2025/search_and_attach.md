@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy/medium/hard
 - Points:
 - Provided Files:
-- tools:
+- Tools:
 ## Brief Description
 ## Initial Analysis
 ### Environment

@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy
 - Points: 2
 - Provided Files: rtl.c, rtl(ELF)
-- tools: gdb(pwndbg)
+- Tools: gdb(pwndbg)
 ## Brief Description
 Exploit Tech: Return to Library에서 실습하는 문제입니다.
 ## Initial Analysis

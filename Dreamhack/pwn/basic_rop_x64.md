@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy
 - Points: 2
 - Provided Files: basic_rop_x64.c, basic_rop_x64(ELF), libc.so.6
-- tools: gdb(pwndbg), checksec, ROPgadget 
+- Tools: gdb(pwndbg), checksec, ROPgadget 
 ## Brief Description
 이 문제는 서버에서 작동하고 있는 서비스(basic_rop_x64)의 바이너리와 소스 코드가 주어집니다.
 Return Oriented Programming 공격 기법을 통해 셸을 획득한 후, "flag" 파일을 읽으세요.

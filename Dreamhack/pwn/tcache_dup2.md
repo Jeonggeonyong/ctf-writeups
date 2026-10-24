@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy
 - Points: 2
 - Provided Files: libc-2.30.so, tcache_dup2.c, tcache_dup2(ELF)
-- tools:
+- Tools:
 ## Brief Description
 ## Initial Analysis
 ### Environment

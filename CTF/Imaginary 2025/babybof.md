@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy
 - Points: 100
 - Provided Files: vuln(ELF)
-- tools: gdb(pwndbg), checksec, pwntool
+- Tools: gdb(pwndbg), checksec, pwntool
 ## Brief Description
 welcome to pwn! hopefully you can do your first buffer overflow
 ## Initial Analysis

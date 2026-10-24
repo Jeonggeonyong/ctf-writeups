@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy
 - Points: 1
 - Provided Files: cmd_center.c, cmd_center(ELF)
-- tools:
+- Tools:
 ## Brief Description
 ## Initial Analysis
 ### Environment

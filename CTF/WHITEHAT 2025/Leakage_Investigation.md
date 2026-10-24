@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy/medium/hard
 - Points:
 - Provided Files:
-- tools:
+- Tools:
 ## Brief Description
 문제 설명  
 "LumenGrid Labs" 내부에서 누군가가 신제품에 대한 기밀 정보를 유출한 것을 발견하였습니다.  
@@ -31,6 +31,6 @@ https://en.wikipedia.org/wiki/Reserved_IP_addresses
 ``` python
 from pwn import *
 ```
-## PoC(Poof of Concept)
+## PoC (Proof of Concept)
 ## Lessons Learned
 ## Mitigation Strategies(Remediation)

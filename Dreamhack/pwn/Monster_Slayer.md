@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy
 - Points: 2
 - Provided Files: chall.c, chall(ELF)
-- tools:
+- Tools:
 ## Brief Description
 Use your power to defeat the monster.
 ## Initial Analysis

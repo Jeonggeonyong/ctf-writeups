@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy
 - Points: 2
 - Provided Files: prob.py, flag
-- tools:
+- Tools:
 ## Brief Description
 I've heard that DES uses 56-bit key, but it looks like 8-byte for me. Does it imply 1-byte == 7-bit?
 ## Initial Analysis

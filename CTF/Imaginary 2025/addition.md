@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy
 - Points: 100
 - Provided Files: vuln(ELF)
-- tools:
+- Tools:
 ## Brief Description
 i love addition
 ## Initial Analysis

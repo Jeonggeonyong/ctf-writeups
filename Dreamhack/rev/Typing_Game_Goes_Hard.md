@@ -6,7 +6,7 @@
 - Difficulty (subjective): medium
 - Points: 3
 - Provided Files: dictionary.txt, chall(ELF)
-- tools:
+- Tools:
 ## Brief Description
 When Typing Game gets harder
 ## Initial Analysis
@@ -85,7 +85,7 @@ void coreFunc(void) {
 1. `setUint16Rand()` 함수로 `seed`를 통해 `key`값을 1차적으로 생성한다.
 2. `choose()` 함수를 통해 딕셔녀리에서 가져올 문자(index)를 선택한다.
 3. `key`는 8번 사용될 때마다 `resetUint16Rand()` 함수를 통해서 초기화한다. (`choose()` 함수 내부)
-## PoC(Poof of Concept)
+## PoC (Proof of Concept)
 얼핏보면 중간에 연산이 많아 복잡해 보이지만, `key`와 `choson`은 `seed`에 대한 연산을 통해 만들어지며, 연산 자체는 FLAG나 주요 로직에서 큰 의미가 없기 때문에 `추상화`가 가능하다. 즉, 초기 `seed` 값만 알 수 있다면, 다음에 나올 문제를 예측할 수 있고 이를 통해 HARD MODE의 블라인드 게임을 통과할 수 있다. 다행히 `seed`의 크기는 2 byte로 경우의 수가 총 65,536개 뿐이다. 이는 PC로 충분히 연산 가능한 범위기 때문에, brute force로 모든 `seed`에 대해서 연산을 거쳐 나온 단어와 EASY MODE의 첫 번째 단어를 비교하는 것으로 `seed` 값을 유출할 수 있다.  
 ### payload
 ``` python

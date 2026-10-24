@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy
 - Points: 1
 - Provided Files: out_of_bounds.c, out_of_bounds(ELF)
-- tools: 
+- Tools: 
 ## Brief Description
 이 문제는 서버에서 작동하고 있는 서비스(out_of_bound)의 바이너리와 소스 코드가 주어집니다.
 프로그램의 취약점을 찾고 익스플로잇해 셸을 획득하세요.

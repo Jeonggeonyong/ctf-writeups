@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy
 - Points: 1
 - Provided Files: hook.c, hook(ELF), libc-2.23.so
-- tools:
+- Tools:
 ## Brief Description
 이 문제는 작동하고 있는 서비스(hook)의 바이너리와 소스코드가 주어집니다.
 프로그램의 취약점을 찾고 _hook Overwrite 공격 기법으로 익스플로잇해 셸을 획득한 후, "flag" 파일을 읽으세요.

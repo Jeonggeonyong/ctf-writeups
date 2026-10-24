@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy
 - Points:
 - Provided Files: Arm Training-v2(ELF)
-- tools: gdb(pwndbg), checksec, ROPgadget, ghidra
+- Tools: gdb(pwndbg), checksec, ROPgadget, ghidra
 ## Brief Description
 셸을 획득하여 /flag를 읽어주세요!
 ## Initial Analysis

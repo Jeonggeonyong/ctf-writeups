@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy
 - Points: 477
 - Provided Files: overflow_me(ELF)
-- tools: 
+- Tools: 
 ## Brief Description
 ## Initial Analysis
 ### Environment
@@ -73,6 +73,6 @@ p.sendlineafter(b'Your turn now. Write yourself into this story.', payload)
 # interactive
 p.interactive() 
 ```
-### PoC(Poof of Concept)
+### PoC (Proof of Concept)
 ## Lessons Learned
 ## Mitigation Strategies(Remediation)

@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy
 - Points: 2
 - Provided Files: fho.c, fho(ELF), libc-2.27.so
-- tools: gdb(pwndbg), checksec, readelf
+- Tools: gdb(pwndbg), checksec, readelf
 ## Brief Description
 Exploit Tech: Hook Overwrite에서 실습하는 문제입니다.
 ## Initial Analysis

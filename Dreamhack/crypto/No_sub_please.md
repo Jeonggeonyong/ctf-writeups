@@ -6,7 +6,7 @@
 - Difficulty (subjective): easy
 - Points: 2
 - Provided Files: chall.py, AES.py
-- tools:
+- Tools:
 ## Brief Description
 ## Initial Analysis
 ### Code
