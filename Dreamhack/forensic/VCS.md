@@ -94,4 +94,5 @@ reflog에서 `audit/recovery` 브랜치로 이동해 기록 추가 커밋(107f7e
 *그림 8. FLAG 확인*
 
 ## Conclusion
-`git log`와 `git branch -a`에는 `main` 브랜치의 커밋 1개만 보였지만, `.git/logs/HEAD`(reflog)에는 삭제된 `audit/recovery` 브랜치로 이동해 커밋(107f7e0)을 만든 기록이 남아 있었다. 브랜치는 커밋을 가리키는 ref일 뿐이므로 ref가 삭제되어도 커밋 오브젝트는 `objects/`에 남는다. reflog에서 얻은 해시로 checkout하여 숨겨진 FLAG를 확인할 수 있었다.
+BPB는 구조가 고정되어 있어 오프셋만 알면 파일 시스템 종류, 볼륨 크기, 시리얼 번호를 바로 읽을 수 있다. 이를 적용해 A, B, C를 구하고 합산하여 FLAG를 얻었다.
+- 배운 점: 리틀 엔디언 해석, FAT32와 NTFS의 VBR 구조 차이
